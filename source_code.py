@@ -44,6 +44,8 @@ class Generate_QA_Agent:
         """
         Loading Tools for the Agent
         """
+
+# if you have Pdf documents only
         # folder_path = "./documents"
         # file_list = os.listdir(folder_path)
 
@@ -57,6 +59,8 @@ class Generate_QA_Agent:
         # text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
         # texts = text_splitter.split_documents(documents)
         # vector_store = FAISS.from_documents(texts, self.embeddings)
+
+# if you have already created vectorstore of documents
         pinecone.init(api_key = pinecone_key, environment = pinecone_env)
         vector_store = Pinecone.from_existing_index("light-chapter-index", self.embeddings)
         retriever = RetrievalQA.from_chain_type(
