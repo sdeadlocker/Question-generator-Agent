@@ -1,4 +1,4 @@
-import os
+ import os
 import pinecone
 import environ
 env = environ.Env()
@@ -92,11 +92,10 @@ class Generate_QA_Agent:
         memory = ConversationBufferMemory(memory_key="chat_history")
         
         prefix = """You are a helpful assistant that generate and display questions with answers related to the vectorestore.
-        If the input is not related to light, say "Please ask question related to light only"
-        You should not reach the itreation limit, after 3 iteration display, "Please ask question related to light only".
+        If the input is not related to the provided document, say "Please ask question related to light only"
+        You should not reach the itreation limit, after 3 iteration display, "Please ask question related to document only".
         Provide correct response, before finishing the chain.
-        You should not generate MCQs and subjective questions outside the scope of the light,
-        "say I dont have any information.
+        You should not generate MCQs and subjective questions outside the scope of the document,"say I dont have any information.
 
 
         Below is an instruction that describes a task, paired with an input that provides further context. 
